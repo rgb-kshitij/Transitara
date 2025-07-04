@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Transitara helps you plan your journey...">
+    <title>Transitara - Your Smart Travel Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="AiTripPlanner.css">
+    <script src="script.js" defer></script>
+    <script src="TripPlanner.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="pictures\favicon.ico">
+</head>
+<body class="TripPlanner">
+
+<!-- AI TRIP PLANNER HTML -->
+   
+<main class="ai-planner-main">
+  <section class="ai-planner-section">
+    <h1>AI Trip Planner</h1>
+    <p>Let our AI help you create your perfect itinerary!</p>
+
+    <form id="tripForm" class="trip-planner-form">
+      <div class="form-group">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" placeholder="e.g., Paris, Tokyo, Goa" required />
+      </div>
+      <div class="form-group">
+        <label for="days">Number of Days:</label>
+        <input type="number" id="days" name="days" placeholder="e.g., 5, 7" min="1" required />
+      </div>
+      <button type="submit" class="plan-button">Generate Trip Plan</button>
+    </form>
+
+    <div class="trip-plan-results" id="tripResults">
+      <h2>Your AI-Generated Trip Plan:</h2>
+      <p>Enter your destination and number of days above to get a customized trip plan.</p>
+      <div id="loadingSpinner" class="spinner hidden"></div>
+
+    </div>
+  </section>
+</main>
+
+
+    <!-- AI TRIP PLANNER HTML Ends -->
+  <!-- here we are stating our chat bot code by kshitiz -->
+<!-- Floating Chat Icon -->
+
+<div id="chat-toggle-button" class="chat-icon"><img src="pictures\ChatBotRo.svg" class="bounce"></div>
+
+<!-- Chatbot Popup -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-container">
+        <div class="chat-header">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+        <i>EVA the Chatbot</i>
+    </div>
+    <div id="chat-close-button" class="chat-close-button">❌</div>
+</div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="ai-message">Welcome to Transitara <br> How can I help you today?</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-button">
+                Send
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+  <!-- here our chatbot ends -->
+    <!-- Footer started from here -->
+     <footer class="footer">
+      <div class="footer content">
+        <div>
+          <h2>QUICK LINKS</h2>
+          <div class="container">
+          <div class="column">
+         <ul class="quick">
+        <li class="QuickLinks"><a href="index.html" target="_blank"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="QuickLinks"><a href="Flight.html" target="_blank"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="QuickLinks"><a href="Hotel.html" target="_blank"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="QuickLinks"><a href="HolidayPackage.html" target="_blank"><i class="fa-solid fa-umbrella-beach"></i> Package</a></li> -->
+        <li class="QuickLinks"><a href="http://127.0.0.1:5000/"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        </ul>
+          </div>
+         <!-- next column -->
+          <div class="column">
+          <ul class="quick">
+        <li class="QuickLinks"><a href="Train.html" target="_blank"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="QuickLinks"><a href="Bus.html" target="_blank"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="QuickLinks"><a href="Cab.html" target="_blank"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="QuickLinks"><a href="ContactUs.html" target="_blank"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+         </ul>
+          </div>
+          </div>
+        </div>
+        <div class="taglines">
+          <h2>TRANSITARA</h2>
+          <P class="tag"><pre>
+"Transitara — Your travel partner!
+Discover personalized recommendations, hidden gems,
+budget tips, and connect with a vibrant traveler community.
+Explore safely, sustainably,     
+and make every journey unforgettable with Transitara."
+      </pre>
+              </P>
+        </div>
+        <div class="install">
+          <h2>Download Now</h2>
+         <a href="https://play.google.com/store/games?hl=en_IN&pli=1" target="_blank"><img src="pictures\playstore.png" alt="Google play"></a>
+        </div>
+        <div class="Followus">
+          <h2>FOLLOW US</h2>
+         <a href="#"><i class="fa-brands fa-square-instagram"></i>INSTAGRAM </a>
+          <a href="#"><i class="fa-brands fa-square-youtube"></i> YOUTUBE </a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i> TWITTER</a>
+          <a href="#"><i class="fa-brands fa-square-facebook"></i> FACEBOOK</a>
+        </div>
+        <div class="Scan">
+        <h2>SCAN ME</h2>
+        <a href="index.html"><img src="pictures\Untitled.png" alt="QR CODE"></a>
+        </div>
+      </footer>
+      <div class="copyright">
+          <a href="index.html"><i class="fa-solid fa-globe"></i>WWW.TRANSITARA.COM</a>
+          <a>&copy; 2025 TRANSITARA PVT. LTD</a>
+          <a href="mail to: Transitara@gmail.com"><i class="far fa-envelope"></i>TRANSITARA@GMAIL.COM</a>
+          <a href="tel: +917775552228"><i class="fa-solid fa-phone"></i>+91 7775552228</a>
+          <a href="Terms & Condition.html" target="_blank"><i class="fa-regular fa-file-contract"></i>TERMS & CONDITION</a>
+          </div>
+     <!-- Footer ends here --> 
+</body>
+</html>

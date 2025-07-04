@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Transitara helps you plan your journey...">
+    <title>Transitara - Your Smart Travel Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="AiTripPlanner.css">
+    <script src="script.js" defer></script>
+    <script src="TripPlanner.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="pictures\favicon.ico">
+</head>
+<body class="Cab">
+  <!-- Making header of my website containg navbar -->
+  <nav class="navbar">
+    <div class="hamburger" onclick="toggleMobileMenu()">
+  <i class="fa fa-bars"></i>
+</div>
+    <div class="logo">
+     <a href="#"> <img src="pictures\logo-removebg-preview.png" alt="Transitara Logo"></a>
+    </div>
+    <ul class="nav-links">
+        <li class="navitem"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+         <li class="navitem"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        <li class="navitem"><a href="Flight.html"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="navitem"><a href="Hotel.html"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="navitem"><a href="HolidayPackage.html"><i class="fa-solid fa-umbrella-beach"></i> Holiday Package</a></li> -->
+        <li class="navitem"><a href="Train.html"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="navitem"><a href="Bus.html"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="navitem"><a href="Cab.html"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="navitem"><a href="ContactUs.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+    </ul>
+    <!-- Login & Signup buttons -->
+<div class="login button">
+  <button onclick="showForm('login')">LOGIN</button>
+  <button onclick="showForm('signup')">SIGN UP</button>
+</div>
+<!-- Login & Signup Modal -->
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <span class="close" onclick="hideForm()">&times;</span>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form hidden" onsubmit="return validateForm(event, 'login')">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="loginPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('loginPass')">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden" onsubmit="return validateForm(event, 'signup')">
+      <h2>Sign Up</h2>
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="signupPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('signupPass')">👁️</span>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+  </nav>
+   <!-- navbar ends here, maked navbar sticky-->
+
+  <!-- here we are stating our chat bot code by kshitiz -->
+   
+<!-- Floating Chat Icon -->
+
+<div id="chat-toggle-button" class="chat-icon"><img src="pictures\ChatBotRo.svg" class="bounce"></div>
+
+<!-- Chatbot Popup -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-container">
+        <div class="chat-header">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+        <i>EVA the Chatbot</i>
+    </div>
+    <div id="chat-close-button" class="chat-close-button">❌</div>
+</div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="ai-message">Welcome to Transitara <br> How can I help you today?</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-button">
+                Send
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+  <!-- here our chatbot ends -->
+   <!-- Cab Search Bar starts from here -->
+<div class="cab-search">
+  <div class="cab-type-options">
+    <ul class="cab-type-list">
+      <li class="cab-type-item"><a href="#" class="cab-active-type">Cabs</a></li>
+      <li class="cab-type-item"><a href="#">Airport Transfer</a></li>
+      <li class="cab-type-item"><a href="#">Outstation</a></li>
+    </ul>
+  </div>
+
+  <div class="cab-search-container">
+    <div class="cab-inputs">
+      <div class="cab-input-group">
+        <label for="pickup-location">PICKUP</label>
+        <input type="text" id="pickup-location" placeholder="Enter pickup location" />
+        <p class="cab-suggestion-output" id="pickup-suggestions"></p>
+      </div>
+
+      <div class="cab-input-group">
+        <label for="drop-location">DROP</label>
+        <input type="text" id="drop-location" placeholder="Enter drop location" />
+        <p class="cab-suggestion-output" id="drop-suggestions"></p>
+      </div>
+
+      <div class="cab-input-group">
+        <label for="pickup-date">DATE</label>
+        <input type="date" id="pickup-date" />
+      </div>
+
+      <div class="cab-input-group">
+        <label for="cab-type">CAB TYPE</label>
+        <select id="cab-type">
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Luxury">Luxury</option>
+          <option value="Auto">Auto</option>
+        </select>
+      </div>
+
+      <button class="cab-search-button">SEARCH CABS</button>
+    </div>
+
+    <div class="cab-special-offers">
+      <label><input type="radio" name="cab-option" value="One Way" /> One Way</label>
+      <label><input type="radio" name="cab-option" value="Round Trip" /> Round Trip</label>
+      <label><input type="radio" name="cab-option" value="Hourly Rental" /> Hourly Rental</label>
+    </div>
+  </div>
+</div>
+<!-- Cab Search Bar ends here -->
+
+<section class="car-rental-section">
+    <h1>Flexible Hourly Car Rentals in India</h1>
+    <p>Rent a car by the hour for convenient and affordable travel within major Indian cities. Enjoy the freedom to explore at your own pace.</p>
+    
+    <div class="card-container">
+      <!-- Delhi -->
+      <div class="city-card">
+        <img src="pictures\delhi-car.png" alt="Delhi Car" />
+        <div class="city-info">
+          <h3>Delhi</h3>
+          <p>Delhi, India</p>
+          <div class="price-book">
+            <span>From ₹940</span>
+            <a href="#">Book →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hyderabad -->
+      <div class="city-card">
+        <img src="pictures\Hyderabad-car.png" alt="Hyderabad Car" />
+        <div class="city-info">
+          <h3>Hyderabad</h3>
+          <p>Andhra Pradesh, India</p>
+          <div class="price-book">
+            <span>From ₹1,400</span>
+            <a href="#">Book →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chennai -->
+      <div class="city-card">
+        <img src="pictures\chennai.png" alt="Chennai Car" />
+        <div class="city-info">
+          <h3>Chennai</h3>
+          <p>Tamil Nadu, India</p>
+          <div class="price-book">
+            <span>From ₹1,500</span>
+            <a href="#">Book →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bengaluru -->
+      <div class="city-card">
+        <img src="pictures\Bangaluru-car.png" alt="Bengaluru Car" />
+        <div class="city-info">
+          <h3>Bengaluru</h3>
+          <p>Karnataka, India</p>
+          <div class="price-book">
+            <span>From ₹1,200</span>
+            <a href="#">Book →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- why book cab with us starts -->
+ <div class="Cab-book">
+  <h1>Benefits To Book Cab With Us</h1>
+  <div class="Cab-book-benefits">
+    <div class="Cab-benefits-offer">
+      <img src="pictures\cab 150+.svg">
+      <h3>150+ Countries Wordwide</h3>
+      <p>No matter where you travel, EaseMyTrip provides reliable cab services globally.</p>
+    </div>
+    <div class="Cab-benefits-offer">
+      <img style="height: 50px;" src="pictures\Instant refund.svg" >
+      <h3>100% Full Refund Policy</h3>
+      <p>We offer free cancellation on cab bookings in select cases for your convenience.</p>
+    </div>
+    <div class="Cab-benefits-offer">
+      <img src="pictures\cab 10000.svg">
+      <h3>10,000+ Routes Covered</h3>
+      <p>We ensure that you can travel to almost any city to city ride seamlessly across India.</p>
+    </div>
+     <div class="Cab-benefits-offer">
+      <img style="height: 50px;" src="pictures\Lowest price.svg" >
+      <h3>Lowest Price</h3>
+      <p>We ensure low rates on hotel reservation, holiday packages and on flight tickets.</p>
+    </div>
+    <div class="Cab-benefits-offer">
+      <img src="pictures\cab support.svg">
+      <h3>24/7 Support</h3>
+      <p>Our dedicated support team is available around the clock to assist you..</p>
+    </div>
+  </div>
+ </div>
+<!-- why book us cab ends -->
+ <section class="cab-info">
+  <div class="cab-info-inside">
+    <h1>Hassle-Free Cab Booking with Transitara</h1>
+    <p>
+      Are you tired of the never-ending struggle to book a cab online, especially during unfavorable weather conditions or in emergency situations? Look no further! Transitara is here to provide you with a seamless and convenient solution for all your cab booking needs. As a customer-centric company, we strive to deliver the best services to our travellers, ensuring a stress-free journey every time.
+    </p>
+
+    <h2>Unmatched Variety of Cabs and Discounts</h2>
+    <p>
+      At Transitara, we believe in providing our customers with a wide selection of cab options to cater to their diverse needs. Our extensive network consists of 4000+ cab operators through different vendors, ensuring you always have a reliable and comfortable mode of transportation available. Choose from a range of categories, including Hatchbacks, sedans, SUVs, and more, depending on your preferences and group size.
+    </p>
+    <p>
+      Moreover, we understand the value of saving money while traveling. That's why Transitara offers discounted rates on taxi services. By booking through our platform, you can enjoy cost-effective cab rides without compromising on quality and reliability.
+    </p>
+
+    <h2>Hassle-Free Cab Booking with Transitara</h2>
+    <p>
+      At Transitara, we have designed an intuitive and user-friendly interface to enhance your online cab booking experience. Our platform offers a straightforward and effortless process, allowing you to book a cab in just a few clicks. Here's how it works:
+    </p>
+    <ul>
+      <li><strong>Login/Open Transitara Portal:</strong> Begin by accessing our user-friendly website or mobile app. Log in to your account or create a new one if you haven't already.</li>
+      <li><strong>Head to the Cabs Section:</strong> Once you're logged in, navigate to the dedicated "Cabs" section, where you'll find a wide range of options tailored to suit your specific requirements.</li>
+      <li><strong>Choose Your Purpose:</strong> Select the purpose for which you need the cab. Whether it's for local hourly travel, outstation trips or airport transfers, we have you covered.</li>
+      <li><strong>Enter the Details:</strong> Fill in the necessary details, such as the pickup location, drop-off location, date, time, and any additional preferences you may have. Our advanced search filters help you find the perfect cab that matches your criteria.</li>
+      <li><strong>Book with Ease:</strong> With a few clicks, confirm your booking, and your cab will be reserved instantly. No more waiting endlessly or uncertain about the availability of your ride. We prioritize efficiency and promptness.</li>
+    </ul>
+
+    <h3>Your Journey, Our Priority</h3>
+    <p>
+      When you book a cab with Transitara, we prioritize your safety, comfort, and satisfaction. Our dedicated team ensures that every aspect of your journey is well taken care of, from the moment you make the booking until you reach your destination. With our experienced drivers and well-maintained vehicles, you can relax and enjoy a hassle-free ride.
+    </p>
+
+    <h2>Book Your Cab with Transitara Today!</h2>
+    <p>
+      Don't let the complexities of cab booking deter you from enjoying a smooth and convenient travel experience. Transitara simplifies the process, making it accessible to everyone. With our user-friendly interface, diverse range of cabs, discounted rates, and unwavering commitment to customer satisfaction, we are your go-to platform for online cab booking.
+    </p>
+    <p>
+      So, why wait? Take advantage of Transitara's exceptional cab booking services and travel comfortably, knowing that your journey is in good hands. Book your cab today and embark on a hassle-free travel experience.
+    </p>
+  </div>
+  </section>
+ <div class="Border"></div>
+    <!-- Footer started from here -->
+     <footer class="footer">
+      <div class="footer content">
+        <div>
+          <h2>QUICK LINKS</h2>
+          <div class="container">
+          <div class="column">
+         <ul class="quick">
+        <li class="QuickLinks"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="QuickLinks"><a href="Flight.html" target="_blank"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="QuickLinks"><a href="Hotel.html" target="_blank"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="QuickLinks"><a href="HolidayPackage.html" target="_blank"><i class="fa-solid fa-umbrella-beach"></i> Package</a></li> -->
+        <li class="QuickLinks"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        </ul>
+          </div>
+         <!-- next column -->
+          <div class="column">
+          <ul class="quick">
+        <li class="QuickLinks"><a href="Train.html" target="_blank"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="QuickLinks"><a href="Bus.html" target="_blank"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="QuickLinks"><a href="Cab.html" target="_blank"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="QuickLinks"><a href="ContactUs.html" target="_blank"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+         </ul>
+          </div>
+          </div>
+        </div>
+        <div class="taglines">
+          <h2>TRANSITARA</h2>
+          <P class="tag"><pre>
+"Transitara — Your travel partner!
+Discover personalized recommendations, hidden gems,
+budget tips, and connect with a vibrant traveler community.
+Explore safely, sustainably,     
+and make every journey unforgettable with Transitara."
+      </pre>
+              </P>
+        </div>
+        <div class="install">
+          <h2>Download Now</h2>
+         <a href="https://play.google.com/store/games?hl=en_IN&pli=1" target="_blank"><img src="pictures\playstore.png" alt="Google play"></a>
+        </div>
+        <div class="Followus">
+          <h2>FOLLOW US</h2>
+         <a href="#"><i class="fa-brands fa-square-instagram"></i>INSTAGRAM </a>
+          <a href="#"><i class="fa-brands fa-square-youtube"></i> YOUTUBE </a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i> TWITTER</a>
+          <a href="#"><i class="fa-brands fa-square-facebook"></i> FACEBOOK</a>
+        </div>
+        <div class="Scan">
+        <h2>SCAN ME</h2>
+        <a href="index.html"><img src="pictures\Untitled.png" alt="QR CODE"></a>
+        </div>
+      </footer>
+      <div class="copyright">
+          <a href="index.html"><i class="fa-solid fa-globe"></i>WWW.TRANSITARA.COM</a>
+          <a>&copy; 2025 TRANSITARA PVT. LTD</a>
+          <a href="mail to: Transitara@gmail.com"><i class="far fa-envelope"></i>TRANSITARA@GMAIL.COM</a>
+          <a href="tel: +917775552228"><i class="fa-solid fa-phone"></i>+91 777555222</a>
+          <a href="Terms & Condition.html" target="_blank"><i class="fa-regular fa-file-contract"></i>TERMS & CONDITION</a>
+          </div>
+     <!-- Footer ends here --> 
+</body>
+</html>

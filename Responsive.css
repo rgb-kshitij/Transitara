@@ -1,0 +1,213 @@
+/* Responsive.css - Fully responsive support for Transitara site */
+
+/* ---------------------- Global Breakpoints ---------------------- */
+
+@media (max-width: 1200px) {
+  .searchinputs {
+    flex-wrap: wrap;
+  }
+  .inputgroup {
+    width: 45% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .navitem {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .searchinputs {
+    flex-direction: column;
+  }
+
+  .inputgroup {
+    width: 100% !important;
+  }
+
+  .login.button {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .chat-container {
+    right: 10px;
+    width: 90%;
+    height: 400px;
+  }
+
+  p {
+    font-size: 15px !important;
+  }
+
+  .footer-contact p {
+    font-size: 14px !important;
+  }
+
+  .footer-copyright {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro, .line, .lines, .highlight {
+    font-size: 32px !important;
+  }
+
+  .goldtext, .tagline {
+    font-size: 18px !important;
+  }
+
+  .mmt {
+    margin: 10px;
+  }
+
+  .chat-icon img {
+    height: 70px;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  .footer-contact p {
+    font-size: 13px !important;
+  }
+
+  .footer-copyright {
+    font-size: 13px !important;
+  }
+
+  /* Contact Us Responsive Fix */
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .contact-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contact-left-title h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .contact-left-title hr {
+    margin: 0 auto 20px;
+  }
+
+  .contact-inputs {
+    width: 90% !important;
+    max-width: 400px;
+    height: auto;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
+
+  .contact-left textarea {
+    height: 120px;
+    padding: 15px;
+    resize: vertical;
+  }
+
+  .contact-left button {
+    font-size: 16px;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .contact-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-right img {
+    width: 80%;
+    max-width: 350px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    height: 350px;
+  }
+
+  .intro, .line, .lines {
+    font-size: 24px !important;
+  }
+
+  .highlight {
+    font-size: 26px !important;
+  }
+
+  .inputgroup label {
+    font-size: 14px;
+  }
+
+  .inputgroup input, .inputgroup select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .send-button, .chat-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .plan-button {
+    padding: 10px 18px;
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+
+  .footer-contact p {
+    font-size: 12px !important;
+  }
+
+  .footer-copyright {
+    font-size: 12px !important;
+  }
+}
+
+/* Ensure chatbot, navbar, forms, hero and planner adapt cleanly */

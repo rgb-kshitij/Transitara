@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Transitara helps you plan your journey...">
+    <title>Transitara - Your Smart Travel Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="AiTripPlanner.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="pictures\favicon.ico">
+</head>
+<body class="Hotel">
+  <!-- Making header of my website containg navbar -->
+  <nav class="navbar">
+    <div class="hamburger" onclick="toggleMobileMenu()">
+  <i class="fa fa-bars"></i>
+</div>
+    <div class="logo">
+     <a href="#"> <img src="pictures\logo-removebg-preview.png" alt="Transitara Logo"></a>
+    </div>
+    <ul class="nav-links">
+        <li class="navitem"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="navitem"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        <li class="navitem"><a href="Flight.html"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="navitem"><a href="Hotel.html"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="navitem"><a href="HolidayPackage.html"><i class="fa-solid fa-umbrella-beach"></i> Holiday Package</a></li> -->
+        <li class="navitem"><a href="Train.html"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="navitem"><a href="Bus.html"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="navitem"><a href="Cab.html"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="navitem"><a href="ContactUs.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+    </ul>
+    <!-- Login & Signup buttons -->
+<div class="login button">
+  <button onclick="showForm('login')">LOGIN</button>
+  <button onclick="showForm('signup')">SIGN UP</button>
+</div>
+<!-- Login & Signup Modal -->
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <span class="close" onclick="hideForm()">&times;</span>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form hidden" onsubmit="return validateForm(event, 'login')">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="loginPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('loginPass')">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden" onsubmit="return validateForm(event, 'signup')">
+      <h2>Sign Up</h2>
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="signupPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('signupPass')">👁️</span>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+  </nav>
+   <!-- navbar ends here, maked navbar sticky-->
+
+  <!-- here we are stating our chat bot code by kshitiz -->
+   
+<!-- Floating Chat Icon -->
+
+<div id="chat-toggle-button" class="chat-icon"><img src="pictures\ChatBotRo.svg" class="bounce"></div>
+
+<!-- Chatbot Popup -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-container">
+        <div class="chat-header">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+        <i>EVA the Chatbot</i>
+    </div>
+    <div id="chat-close-button" class="chat-close-button">❌</div>
+</div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="ai-message">Welcome to Transitara <br> How can I help you today?</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-button">
+                Send
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+  <!-- here our chatbot ends -->
+   <!-- Hotel Search Bar starts from here -->
+<div class="hotel-search">
+  <div class="hotel-type-options">
+    <ul class="hotel-type-list">
+      <li class="hotel-type-item"><a href="#" class="active-trip">Hotels</a></li>
+      <li class="hotel-type-item"><a href="#">Homestays</a></li>
+      <li class="hotel-type-item"><a href="#">Resorts</a></li>
+    </ul>
+  </div>
+
+  <div class="hotel-search-container">
+    <div class="hotel-inputs">
+      <div class="hotel-input-group">
+        <label for="hotel-location">LOCATION</label>
+        <input type="text" id="hotel-location" placeholder="Enter city, area or hotel name" />
+        <p id="hotel-location-suggestions" class="suggestion-output"></p>
+      </div>
+
+      <div class="hotel-input-group">
+        <label for="checkin">CHECK-IN DATE</label>
+        <input type="date" id="checkin" />
+      </div>
+
+      <div class="hotel-input-group">
+        <label for="checkout">CHECK-OUT DATE</label>
+        <input type="date" id="checkout" />
+      </div>
+
+      <div class="hotel-input-group">
+        <label for="guests">GUESTS & ROOMS</label>
+        <select id="guests">
+          <option value="1-1">1 Room, 1 Guest</option>
+          <option value="2-2">2 Rooms, 2 Guests</option>
+          <option value="3-4">3 Rooms, 4 Guests</option>
+        </select>
+      </div>
+
+      <button class="hotel-search-button">SEARCH HOTELS</button>
+    </div>
+
+    <div class="hotel-special-offers">
+      <label><input type="radio" name="hotel-offer" value="Couple Friendly" /> Couple Friendly</label>
+      <label><input type="radio" name="hotel-offer" value="Family Stay" /> Family Stay</label>
+      <label><input type="radio" name="hotel-offer" value="Luxury" /> Luxury Hotels</label>
+      <label><input type="radio" name="hotel-offer" value="Budget" /> Budget Hotels</label>
+    </div>
+  </div>
+</div>
+<!-- Hotel Search Bar ends here -->
+
+   <!-- hotel why book us starts -->
+    <div class="booking-withus">
+      <h2>Why Book Hotels With Transitara?</h2>
+      <div class="booking-withcards">
+        <div class="booking-cards">
+          <img src="pictures\best deal.webp">
+        </div>
+         <div class="booking-cards">
+          <img src="pictures\largest collection.webp">
+        </div>
+         <div class="booking-cards">
+          <img src="pictures\pay at hotel.webp">
+        </div>
+         <div class="booking-cards">
+          <img src="pictures\plan together.webp">
+        </div>
+        <div class="booking-cards">
+          <img src="pictures\offer4.png">
+        </div>
+      </div>
+    </div>
+    <!-- hotel why book us end -->
+   <!-- Here hotel section info starts -->
+     <div class="container-normalinfo">
+    <h2>Online Hotel Booking with Transitara</h2>
+    <p>
+      Transitara is a leading travel platform that ensures easy and hassle-free hotel bookings. With its user-friendly interface and extensive selection of hotels, the OTA enables travellers to find the perfect accommodation for their trips with just a few clicks.
+    </p>
+    <p>
+      Moreover, the platform provides an array of convenient features, including the ability to effortlessly share hotel wishlists, the flexibility to pay at the hotel, and 24x7 customer support to ensure a seamless experience for all travellers.
+    </p>
+
+    <h3>Why book hotels online with Transitara?</h3>
+    <p>
+      Transitara has emerged as the go-to travel platform for train, flight, and bus bookings over the years. It has now expanded its services to offer online hotel booking to travellers. From luxury to budget-friendly accommodations, we ensure a safe and comfortable hotel stay experience across India and internationally.
+    </p>
+
+    <p>Here are some of the advantages of booking hotels with Transitara:</p>
+    <ol>
+      <li><strong>Largest selection of hotels</strong><br>
+        Choose from a wide range of properties to suit your preferences. Be it for family vacations, business trips, or leisure getaways – we've got it all covered.
+      </li>
+      <li><strong>Best deals and prices on hotels</strong><br>
+        Get the lowest prices on your bookings with the best hotel offers and use our advanced filter options for perfect selection.
+      </li>
+      <li><strong>Pay at Hotel option available</strong><br>
+        Make your online hotel booking with TransiTara and get the flexibility to pay at the property directly.
+      </li>
+      <li><strong>Collaborative wishlists</strong><br>
+        Plan your dream vacation together – With our collaborative wishlist feature, share your favourite properties with your travel mates and also let them add their own.
+      </li>
+      <li><strong>24x7 customer support</strong><br>
+        Need help? Get assistance from our Customer Service team for all your hotel reservation-related queries.
+      </li>
+    </ol>
+     <h3>How to search for cheap hotels on Transitara?</h3>
+    <p>
+      Transitara offers a wide selection of hotels that cater to all types of budgets, making it easier for you to find the perfect accommodation that suits your needs.
+    </p>
+    <p>Here’s how you can search for cheap hotels with us:</p>
+    <ol>
+      <li>Log in to the Transitara app.</li>
+      <li>Enter the destination you want to book for.</li>
+      <li>Choose check-in and check-out dates.</li>
+      <li>Select the number of rooms and guests and hit ‘Search Hotels’.</li>
+    </ol>
+    <p>
+      You can easily compare prices of several properties and read reviews before making a reservation. Booking budget-friendly hotels has never been simpler.
+    </p>
+
+    <h3>What are the best offers available for hotel booking on Transitara?</h3>
+    <p>
+      Transitara provides the best prices on hotel room bookings. Additionally, we have multiple discount offers, promo codes and deals that can help you save even more on hotel prices. You can also get exclusive discounts and cashback on credit cards, debit cards and e-wallets. Check out our hotel offers page for more details.
+    </p>
+  </div>
+
+  </div>
+   <!-- here hotel section info ends -->
+    <div class="Border"></div>
+    <!-- Footer started from here -->
+     <footer class="footer">
+      <div class="footer content">
+        <div>
+          <h2>QUICK LINKS</h2>
+          <div class="container">
+          <div class="column">
+         <ul class="quick">
+        <li class="QuickLinks"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="QuickLinks"><a href="Flight.html" target="_blank"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="QuickLinks"><a href="Hotel.html" target="_blank"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="QuickLinks"><a href="HolidayPackage.html" target="_blank"><i class="fa-solid fa-umbrella-beach"></i> Package</a></li> -->
+        <li class="QuickLinks"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        </ul>
+          </div>
+         <!-- next column -->
+          <div class="column">
+          <ul class="quick">
+        <li class="QuickLinks"><a href="Train.html" target="_blank"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="QuickLinks"><a href="Bus.html" target="_blank"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="QuickLinks"><a href="Cab.html" target="_blank"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="QuickLinks"><a href="ContactUs.html" target="_blank"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+         </ul>
+          </div>
+          </div>
+        </div>
+        <div class="taglines">
+          <h2>TRANSITARA</h2>
+          <P class="tag"><pre>
+"Transitara — Your travel partner!
+Discover personalized recommendations, hidden gems,
+budget tips, and connect with a vibrant traveler community.
+Explore safely, sustainably,     
+and make every journey unforgettable with Transitara."
+      </pre>
+              </P>
+        </div>
+        <div class="install">
+          <h2>Download Now</h2>
+         <a href="https://play.google.com/store/games?hl=en_IN&pli=1" target="_blank"><img src="pictures\playstore.png" alt="Google play"></a>
+        </div>
+        <div class="Followus">
+          <h2>FOLLOW US</h2>
+         <a href="#"><i class="fa-brands fa-square-instagram"></i>INSTAGRAM </a>
+          <a href="#"><i class="fa-brands fa-square-youtube"></i> YOUTUBE </a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i> TWITTER</a>
+          <a href="#"><i class="fa-brands fa-square-facebook"></i> FACEBOOK</a>
+        </div>
+        <div class="Scan">
+        <h2>SCAN ME</h2>
+        <a href="index.html"><img src="pictures\Untitled.png" alt="QR CODE"></a>
+        </div>
+      </footer>
+      <div class="copyright">
+          <a href="index.html"><i class="fa-solid fa-globe"></i>WWW.TRANSITARA.COM</a>
+          <a>&copy; 2025 TRANSITARA PVT. LTD</a>
+          <a href="mail to: Transitara@gmail.com"><i class="far fa-envelope"></i>TRANSITARA@GMAIL.COM</a>
+          <a href="tel: +917775552228"><i class="fa-solid fa-phone"></i> +91 7775552228</a>
+          <a href="Terms & Condition.html" target="_blank"><i class="fa-regular fa-file-contract"></i>TERMS & CONDITION</a>
+          </div>
+     <!-- Footer ends here --> 
+</body>
+</html>

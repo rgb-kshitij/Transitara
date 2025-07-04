@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Transitara helps you plan your journey...">
+    <title>Transitara - Your Smart Travel Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="AiTripPlanner.css">
+    <script src="script.js" defer></script>
+    <script src="TripPlanner.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="pictures\favicon.ico">
+</head>
+<body>
+  <!-- Making header of my website containg navbar -->
+  <header class="hero">
+  <nav class="navbar">
+    <div class="hamburger" onclick="toggleMobileMenu()">
+  <i class="fa fa-bars"></i>
+</div>
+    <div class="logo">
+     <a href="#"> <img src="pictures\logo-removebg-preview.png" alt="Transitara Logo"></a>
+    </div>
+    <ul class="nav-links">
+        <li class="navitem"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="navitem"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        <li class="navitem"><a href="Flight.html"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="navitem"><a href="Hotel.html"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="navitem"><a href="HolidayPackage.html"><i class="fa-solid fa-umbrella-beach"></i> Holiday Package</a></li> -->
+        <li class="navitem"><a href="Train.html"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="navitem"><a href="Bus.html"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="navitem"><a href="Cab.html"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="navitem"><a href="ContactUs.html"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+    </ul>
+    <!-- Login & Signup buttons -->
+<div class="login button">
+  <button onclick="showForm('login')">LOGIN</button>
+  <button onclick="showForm('signup')">SIGN UP</button>
+</div>
+<!-- Login & Signup Modal -->
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <span class="close" onclick="hideForm()">&times;</span>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form hidden" onsubmit="return validateForm(event, 'login')">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="loginPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('loginPass')">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden" onsubmit="return validateForm(event, 'signup')">
+      <h2>Sign Up</h2>
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <div class="password-wrapper">
+        <input type="password" id="signupPass" placeholder="Password" required>
+        <span class="toggle" onclick="togglePassword('signupPass')">👁️</span>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+  </nav>
+   <!-- navbar ends here, maked navbar sticky-->
+
+  <!-- here we are stating our chat bot code by kshitiz -->
+   
+<!-- Floating Chat Icon -->
+
+<div id="chat-toggle-button" class="chat-icon"><img src="pictures\ChatBotRo.svg" class="bounce"></div>
+
+<!-- Chatbot Popup -->
+
+<div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-container">
+        <div class="chat-header">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+        <i>EVA the Chatbot</i>
+    </div>
+    <div id="chat-close-button" class="chat-close-button">❌</div>
+</div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="ai-message">Welcome to Transitara <br> How can I help you today?</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-button">
+                Send
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+  <!-- here our chatbot ends -->
+ 
+    <div class="textbox">
+   <div class="intro">Welcome to <div class="highlight">TRANSITARA</div></div>
+   <div class="tagline">"Seamless Journey, Unmatched Experiences!"</div>
+   <div class="line">Your Gateway to</div>
+   <div class="lines">Unforgettable Journeys</div>
+                 <!-- Search bar starts from here -->
+   <div class="mmt">
+    <div class="triptype">
+      <ul class="choosetriptype">
+        <li class="triptypechoose"><a href="#">One way</a></li>
+        <li class="triptypechoose"><a href="#">Round Trip</a></li>
+        <li class="triptypechoose"><a href="#">Multicity</a></li>
+      </ul>
+    </div>      <!--triptype-->
+   <div class="searchbarcontainer">
+    <div class="searchinputs">
+        <div class="inputgroup">
+            <label for="from">FROM</label>
+            <input type="text" id="from" placeholder="Enter city or airport" oninput="updateAirport('from', 'from-airport')">
+            <p id="from-airport" class="airport-display"></p>
+        </div>
+        <div class="inputgroup">
+            <label for="to">TO</label>
+            <input type="text" id="to" placeholder="Enter city or airport"  oninput="updateAirport('to', 'to-airport')">
+            <p id="to-airport" class="airport-display"></p>
+        </div>
+        <div class="inputgroup">
+            <label for="departure">DEPARTURE DATE</label>
+            <input type="date" id="departure" value="2025-03-31"  onchange="updateDay('departure', 'departure-day')">
+            <p id="departure-day" class="day-display"></p>
+        </div>
+        <div class="inputgroup">
+            <label for="return">RETURN DATE</label>
+            <input type="date" id="return" value="2025-04-02" onchange="updateDay('return', 'return-day')">
+            <p id="return-day" class="day-display"></p>
+        </div>
+        <div class="inputgroup">
+            <label for="travellers">TRAVELLER & CLASS</label>
+            <select id="travellers">
+              <option value="1">1 Traveller - Economy</option>
+              <option value="2">2 Travellers - Economy</option>
+              <option value="3">3 Travellers - Economy</option>
+              <option value="4">4 Travellers - Economy</option>
+              <option value="1-premium">1 Traveller - Premium Economy</option>
+              <option value="2-premium">2 Travellers - Premium Economy</option>
+              <option value="3-premium">3 Travellers - Premium Economy</option>
+              <option value="4-premium">4 Travellers - Premium Economy</option>
+              <option value="1-business">1 Traveller - Business</option>
+              <option value="2-business">2 Travellers - Business</option>
+              <option value="3-business">3 Travellers - Business</option>
+              <option value="4-business">4 Travellers - Business</option>
+              <option value="1-first">1 Traveller - First Class</option>
+              <option value="2-first">2 Travellers - First Class</option>
+              <option value="3-first">3 Travellers - First Class</option>
+              <option value="4-first">4 Travellers - First Class</option>
+            </select>
+        </div>
+        <button class="search-button">SEARCH</button>
+    </div>
+    <div class="specialoffers">
+        <label><input type="radio" name="offers" value="defence"> Defence Forces</label>
+        <label><input type="radio" name="offers" value="students"> Students</label>
+        <label><input type="radio" name="offers" value="senior"> Senior Citizens</label>
+        <label><input type="radio" name="offers" value="doctors"> Doctors-Nurses</label>
+    </div>
+   </div>
+   </div> <!--mmt-->
+                    <!-- Search bar ends here -->
+   <div class="goldtext">Explore • Plan • Experience</div>
+  </div>  <!--textbox-->
+  </header> <!--hero Section ends contains background img-->
+  <div class="Border"></div>
+           <!-- starting my home section from here -->
+    <div class="offersection">
+        <div class="offerlogo">
+          OFFERS
+        </div>
+    </div>
+    <!-- Offer slider starts from here -->
+    <div class="slidercontainer">
+      <div class="slider">
+          <!-- 7 Offer Cards -->
+          <div class="offercard">
+            <img src="pictures\offer1.png">
+            <div class="offercontent">
+              Get Flat 20% Off on Flight Booking.
+              <p class="offervalidity">Valid till: 26th June 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer5.png">
+            <div class="offercontent">
+              Start New Journeys and Make Every Experience Count WithOur Cozy Homestays.
+              <p class="offervalidity">Valid till: 1st Sep 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer3.png">
+            <div class="offercontent">
+              Find Better Hotel Price Anywhere Else & Get Double Refund on the Price Difference value.
+              <p class="offervalidity">Valid till: 1st July 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer4.png">
+            <div class="offercontent">
+              Extra Baggage Allowance for Student Travelers.
+              <p class="offervalidity">Valid till: 1st Aug 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures/offer2.png">
+            <div class="offercontent">
+              Upgrade to Premium Economy with Air India.
+              <p class="offervalidity">Valid till: 1st July 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer6.png">
+            <div class="offercontent">
+              Book Flights from India & Grab Flat 10% OFF on Selected International Destinations.
+              <p class="offervalidity">Valid till: 1st May 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures/offer7.png">
+            <div class="offercontent">
+              Book Akasa Air Domestic Flights at Fares Starting from INR 1,699*
+              <p class="offervalidity">Valid till: 9th July 2025</p>
+            </div>
+          </div>
+          <!-- Duplicate Cards for Infinite Effect -->
+          <div class="offercard">
+            <img src="pictures\offer1.png">
+            <div class="offercontent">
+              Get Flat 20% Off on Flight Booking.
+              <p class="offervalidity">Valid till: 26th June 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer5.png">
+            <div class="offercontent">
+              Start New Journeys and Make Every Experience Count WithOur Cozy Homestays.
+              <p class="offervalidity">Valid till: 1st Sep 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer3.png">
+            <div class="offercontent">
+              Find Better Hotel Price Anywhere Else & Get Double Refund on the Price Difference value.
+              <p class="offervalidity">Valid till: 1st July 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures\offer4.png">
+            <div class="offercontent">
+              Extra Baggage Allowance for Student Travelers.
+              <p class="offervalidity">Valid till: 1st Aug 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures/offer2.png">
+            <div class="offercontent">
+              Upgrade to Premium Economy with Air India.
+              <p class="offervalidity">Valid till: 1st July 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures/offer6.png">
+            <div class="offercontent">
+              Book Flights from India & Grab Flat 10% OFF on Selected International Destinations.
+              <p class="offervalidity">Valid till: 1st May 2025</p>
+            </div>
+          </div>
+          <div class="offercard">
+            <img src="pictures/offer7.png">
+            <div class="offercontent">
+              Book Akasa Air Domestic Flights at Fares Starting from INR 1,699*
+              <p class="offervalidity">Valid till: 9th July 2025</p>
+            </div>
+          </div>
+      </div>
+  </div>
+      <!-- Offer slider ends from here -->
+    <!-- Offer section ends here -->
+     <!-- Popular destination starts from here -->
+      <div class="PDfull">
+       <div class="PDD"><h1>Popular Domestic Destination</h1></div>
+      <div class="PD1">
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Delhi.cms" alt="DELHI"></a>
+          <div class="PDname">DELHI</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Mumbai.jpg" alt="MUMBAI"></a>
+          <div class="PDname">MUMBAI</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Jaipur.jpg" alt="JAIPUR"></a>
+          <div class="PDname">JAIPUR</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Bangalore.jpg" alt="BANGALORE"></a>
+          <div class="PDname">BANGALORE</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Goa.jpg" alt="GOA"></a>
+          <div class="PDname">GOA</div>
+        </div>
+      </div>
+      <div class="PD11">
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Agra.jpg" alt="AGRA"></a>
+        <div class="PDname">AGRA</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\shimla.jpg" alt="SHIMLA"></a>
+        <div class="PDname">SHIMLA</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\lakshadweep-islands.webp" alt="LAKSHADWEEP"></a>
+        <div class="PDname">LAKSHADWEEP</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Manali.jpg" alt="MANALI"></a>
+        <div class="PDname">MANALI</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Kerala.jpg" alt="KERALA"></a>
+        <div class="PDname">KERALA</div>
+      </div>
+      </div>
+      <a href="#"></a><div class="PDD"><h1>Popular International Destination</h1></div>
+      <div class="PD2">
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Dubai.jpg" alt="DUBAI"></a>
+          <div class="PDname">DUBAI</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Bangkok-og_11th-Mar.webp" alt="BANGKOK"></a>
+          <div class="PDname">BANGKOK</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Singapore.webp" alt="SINGAPORE"></a>
+          <div class="PDname">SINGAPORE</div>
+        </div>
+        <div class="PDcards">
+          <a href="#"><img src="pictures\Paris.jpg" alt="Paris"></a>
+          <div class="PDname">PARIS</div>
+        </div>
+        <div class="PDcards">
+         <a href="#"> <img src="pictures\Hong Kong.jpg" alt="HONG KONG"></a>
+          <div class="PDname">HONG KONG</div>
+        </div>
+      </div>
+      <div class="PD22">
+      <div class="PDcards">
+        <a href="#"><img src="pictures\London.jpg" alt="LONDON"></a>
+        <div class="PDname">LONDON</div>
+      </div>
+      <div class="PDcards">
+       <a href="#"> <img src="pictures\New york.jpg" alt="NEW YORK"></a>
+        <div class="PDname">NEW YORK</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Bali.jpg" alt="BALI"></a>
+        <div class="PDname">BALI</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Doha.jpg" alt="DOHA"></a>
+        <div class="PDname">DOHA</div>
+      </div>
+      <div class="PDcards">
+        <a href="#"><img src="pictures\Switzerland.webp" alt="SWITZERLAND"></a>
+        <div class="PDname">SWITZERLAND</div>
+      </div>
+      </div>
+      </div>
+       <!-- Popular destination ends here -->
+    <!-- Why book with us para -->
+     <div class="bookus">
+      <h1>Why book with us?</h1>
+     <div class="whyus">
+      <div class="cards">
+        <img src="pictures\Easy-booking.svg" alt="Easy Booking">
+        <div class="cardtag"><strong>Easy Booking</strong></div>
+        <div class="cardcontent">We offer easy and convenient flight bookings with attractive offers.</div>
+      </div>
+      <div class="cards">
+        <img src="pictures\Lowest price.svg" alt="Lowest Price">
+        <div class="cardtag"><strong> Price </strong></div>
+        <div class="cardcontent">We ensure low rates on hotel reservation, holiday packages and on flight tickets.</div>
+      </div>
+      <div class="cards">
+        <img src="pictures\Instant refund.svg" alt="Instant Refunds"> 
+        <div class="cardtag"><strong>Instant Refunds </strong></div>
+        <div class="cardcontent">Get instant refunds effortlessly on your travel bookings with us.</div>
+      </div>
+      <div class="cards">
+        <img src="pictures\24-7 help.svg" alt="24/7 Support">
+        <div class="cardtag"><strong>24/7 Support </strong></div>
+        <div class="cardcontent">Get assistance 24/7 on any kind of travel related query. We are happy to assist you.</div>
+      </div>
+      <div class="cards">
+        <img src="pictures\Exciting deal.svg" alt="Exciting Deals">
+        <div class="cardtag"><strong>Exciting Deals </strong></div>
+        <div class="cardcontent">Enjoy exciting deals on flights, hotels, buses, car rental and tour packages.</div>
+      </div>
+     </div>
+    </div>
+    <div class="CR"><h1>Guest Feedback</h1></div>
+     <div class="consumer-review">
+     <div class="review">
+      <img src="pictures\cropped_image.png " style="height: 60px; margin-top: 10px; border: 2px solid white; border-radius: 100%;" alt="Easy Booking">
+        <div class="cardtag"><strong>Priya Kumari</strong></div>
+        <div class="cardcontent">"Transitara made my dream trip! From discovering hidden gems in small towns to budget travel tips"
+        </div>
+     </div>
+     <div class="review">
+      <img src="pictures\cropped_image male.png" style="height: 60px; margin-top: 10px; border: 2px solid white; border-radius: 100%; alt="Easy Booking">
+        <div class="cardtag"><strong>Rahul Roy</strong></div>
+        <div class="cardcontent">"I wanted an eco-friendly getaway, and Transitara's sustainable travel section was incredibly helpful."</div>
+     </div>
+     <div class="review">
+      <img src="pictures\cropped_image.png " style="height: 60px; margin-top: 10px; border: 2px solid white; border-radius: 100%;" alt="Easy Booking">
+        <div class="cardtag"><strong>Aisha Jha</strong></div>
+        <div class="cardcontent">"As a solo female traveler, safety is my top concern. It's women-friendly tips and curated hostels list were a lifesaver."</div>
+     </div>
+     <div class="review">
+      <img src="pictures\cropped_image male.png" style="height: 60px; margin-top: 10px; border: 2px solid white; border-radius: 100%;" alt="Easy Booking">
+        <div class="cardtag"><strong>Krishan Raj</strong></div>
+        <div class="cardcontent">"The budget calculator on Transitara was a game-changer! I planned my trip to Southeast Asia without overspending."</div>
+     </div>
+     <div class="review">
+      <img src="pictures\cropped_image.png " style="height: 60px; margin-top: 10px; border: 2px solid white; border-radius: 100%;"  alt="Easy Booking">
+        <div class="cardtag"><strong>Ishika Singh</strong></div>
+        <div class="cardcontent">"I loved the personalized recommendations feature! It understood my preferences and suggested best destinations."</div>
+     </div>
+     </div>
+     <!-- Why book us ends here -->
+    <!-- Creating last paragraph of my landing page -->
+     <div class="paragraph">
+      <div class="last">
+        <h1>Search Flights, Hotels, Bus and Holiday Packages</h1>
+      </div>
+      <div class="para1">
+        Welcome to Transitara — your one-stop destination for planning unforgettable journeys. Whether you’re looking for the best flight deals, cozy accommodations, or reliable bus services, we’ve got it all covered. Our platform is designed to simplify your travel experience, offering a wide range of personalized options to match your preferences and budget.
+      </div>
+      <div class="para1">At Transitara, we understand that every traveler is different. That’s why our AI-powered recommendations suggest destinations, hotels, and activities tailored just for you. From vibrant cities to offbeat getaways, we bring you closer to places you’ll love. Looking to explore on a budget? Our exclusive travel hacks and budget-friendly packages ensure you make the most of your trip without breaking the bank.
+      </div>
+      <div class="para1">
+        Transparency and trust are at the heart of our services. We guarantee no hidden charges and provide honest pricing across all bookings. Whether you’re planning a solo adventure, a family holiday, or a quick business trip, you can count on us to deliver the best deals. Plus, with our user-friendly interface, booking your next adventure is just a few clicks away.
+        Experience the world with confidence and convenience. Discover hidden gems, connect with fellow travelers, and make memories that last a lifetime. Your perfect journey begins here — only at Transitara.
+      </div>
+     </div>
+     <div class="Border"></div>
+     <!-- Last Para completed -->
+    <!-- Footer started from here -->
+     <footer class="footer">
+      <div class="footer content">
+        <div>
+          <h2>QUICK LINKS</h2>
+          <div class="container">
+          <div class="column">
+         <ul class="quick">
+        <li class="QuickLinks"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="QuickLinks"><a href="Flight.html" target="_blank"><i class="fa-solid fa-plane-departure"></i> Flight</a></li>
+        <li class="QuickLinks"><a href="Hotel.html" target="_blank"><i class="fa-solid fa-hotel"></i> Hotels</a></li>
+        <!-- <li class="QuickLinks"><a href="HolidayPackage.html" target="_blank"><i class="fa-solid fa-umbrella-beach"></i> Package</a></li> -->
+        <li class="QuickLinks"><a href="http://127.0.0.1:5000/" target="_blank"><i class="fa-solid fa-robot"></i>Trip Planner</a></li>
+        </ul>
+          </div>
+         <!-- next column -->
+          <div class="column">
+          <ul class="quick">
+        <li class="QuickLinks"><a href="Train.html" target="_blank"><i class="fa-solid fa-train"></i> Train</a></li>
+        <li class="QuickLinks"><a href="Bus.html" target="_blank"><i class="fa-solid fa-bus"></i> Bus</a></li>
+        <li class="QuickLinks"><a href="Cab.html" target="_blank"><i class="fa-solid fa-taxi"></i> Cabs</a></li>
+        <li class="QuickLinks"><a href="ContactUs.html" target="_blank"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+         </ul>
+          </div>
+          </div>
+        </div>
+        <div class="taglines">
+          <h2>TRANSITARA</h2>
+          <P class="tag"><pre>
+"Transitara — Your travel partner!
+Discover personalized recommendations, hidden gems,
+budget tips, and connect with a vibrant traveler community.
+Explore safely, sustainably,     
+and make every journey unforgettable with Transitara."
+      </pre>
+              </P>
+        </div>
+        <div class="install">
+          <h2>Download Now</h2>
+         <a href="https://play.google.com/store/games?hl=en_IN&pli=1" target="_blank"><img src="pictures\playstore.png" alt="Google play"></a>
+        </div>
+        <div class="Followus">
+          <h2>FOLLOW US</h2>
+         <a href="#"><i class="fa-brands fa-square-instagram"></i>INSTAGRAM </a>
+          <a href="#"><i class="fa-brands fa-square-youtube"></i> YOUTUBE </a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i> TWITTER</a>
+          <a href="#"><i class="fa-brands fa-square-facebook"></i> FACEBOOK</a>
+        </div>
+        <div class="Scan">
+        <h2>SCAN ME</h2>
+        <a href="index.html"><img src="pictures\Untitled.png" alt="QR CODE"></a>
+        </div>
+      </footer>
+      <div class="copyright">
+          <a href="index.html"><i class="fa-solid fa-globe"></i>WWW.TRANSITARA.COM</a>
+          <a>&copy; 2025 TRANSITARA PVT. LTD</a>
+          <a href="mail to: Transitara@gmail.com"><i class="far fa-envelope"></i>TRANSITARA@GMAIL.COM</a>
+          <a href="tel: +917775552228"><i class="fa-solid fa-phone"></i>+91 7775552228</a>
+          <a href="Terms & Condition.html" target="_blank"><i class="fa-regular fa-file-contract"></i>TERMS & CONDITION</a>
+          </div>
+     <!-- Footer ends here --> 
+</body>
+</html>

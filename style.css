@@ -1,0 +1,2163 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap');
+body{
+    font-family: "Poppins",serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+         /* Navbar CSS starts from here */
+         /* Hamburger style */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+.logo{
+    align-items: center;
+}
+.logo img{
+    height: 45px;
+    transition: 0.3s ease-in-out;
+}
+.logo img:hover{
+    transform: scale(1.4);
+}
+        /* Logo CSS complete */
+.navbar{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background: #0707077a;
+}
+.nav-links{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    transition: all 0.3s ease-in-out;
+}
+.navitem{
+    margin-left: 20px;
+}
+.navitem a{
+    text-decoration: none;
+    color: rgb(254, 249, 249);
+    font-size: medium;
+    padding: 10px 15px;
+    transition:  0.3s ease-in;
+}
+
+/* AI TRIP PLANNER CSS */
+
+
+/* for js to active page */
+.navitem a.active {
+  background-color: black;
+  color: cyan;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.navitem a:hover{
+    color: cyan;
+    background-color: rgb(0, 4, 5);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.login button{
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px; 
+    border-radius: 25px;
+    font-weight: bolder;
+    border: none;
+    margin-left: 10px;
+    background-color: #ffd700;
+    transition: all 0.3s ease-in-out;
+}
+.login button a{
+    text-decoration: none;
+    color: rgb(20, 12, 12);
+    font-family: "Poppins", serif;
+}
+.login button:hover{
+    background-color: cyan;
+    transform: scale(1.05)
+}
+/* login and sing up form starts from here */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.667);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.modal-content {
+  background: rgba(0, 5, 6, 0.61);
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 350px;
+  position: relative;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  margin: 10px 0px;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: none;
+}
+
+.modal-content button {
+  width: 30%;
+  padding: 12px;
+  background: #E6B800;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background-color: cyan;
+  color: black;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #e4dddd;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.close:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .toggle {
+  position: absolute;
+  right: 10px;
+  top: 30%;
+  cursor: pointer;
+  font-size: 18px;
+  color: gray;
+}
+/* login and signup form ends here */
+i{
+    margin-right: 8px;
+}
+               /* Navbar CSS ends here */
+
+/* Floating chat icon */
+.chat-icon img:hover{
+    cursor: pointer;
+}
+.bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+/* Hide by default */
+.hidden {
+    display: none;
+}
+   .chat-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #4f46e5; /* Indigo 600 */
+    color: #ffffff;
+    padding: 15px;
+    font-weight: bold;
+    align-items: center;
+}
+.chat-header svg {
+    fill: currentColor;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.chat-close-button {
+    cursor: pointer;
+    font-size: 18px;
+    background-color: transparent;
+    transition: transform 0.2s;
+}
+.chat-close-button:hover {
+    transform: scale(1.2);
+}
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 1000;
+}
+.chat-icon img{
+    height: 120px;
+}
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 100px;
+    bottom: 60px;
+    width: 350px;
+    height: 450px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb; /* Light border */
+    z-index: 1000;
+}
+.ai-message{
+    text-align: center;
+    background-color: #f3f4f6; /* Light gray */
+    align-self: flex-start;
+    color: #1f2937; /* Dark gray text */
+    padding: 15px;
+    border-radius: 15px;
+}
+.user-message {
+    background-color: #e0e7ff; /* Indigo 100 */
+    align-self: flex-end;
+    color: #1f2937; /* Dark gray text */
+    border-bottom-right-radius: 0.25rem; /* Sharper corner for sender */
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scroll-behavior: smooth;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #e0e7ff; /* Indigo 100 */
+    align-self: flex-end;
+    color: #1f2937; /* Dark gray text */
+    border-bottom-right-radius: 0.25rem; /* Sharper corner for sender */
+}
+
+.loading-indicator {
+    align-self: flex-start;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    font-style: italic;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    gap: 10px;
+}
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #d1d5db; /* Gray 300 */
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    color: #1f2937;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.chat-input:focus {
+    border-color: #4f46e5; /* Indigo 600 on focus */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+.send-button {
+    background-color: #4f46e5; /* Indigo 600 */
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.send-button:hover {
+    background-color: #4338ca; /* Indigo 700 */
+    transform: translateY(-1px);
+}
+
+.send-button:active {
+    transform: translateY(0);
+    background-color: #3730a3; /* Indigo 800 */
+}
+
+.send-button:disabled {
+    background-color: #9ca3af; /* Gray 400 */
+    cursor: not-allowed;
+    transform: none;
+}
+
+               /* Hero Section CSS starts from here */
+.intro{
+    margin-top: 70px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.goldtext{
+    color: #ffd700; -webkit-text-stroke:1px black;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 30px;
+}
+.highlight{
+    color: cyan; -webkit-text-stroke:1px black;
+    font-weight: bold ;
+    font-family: "Roboto Slab", serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0,1);
+    margin-left: 20px;
+}
+.line{
+    font-size: 50px;
+    text-align: center;
+    color: aliceblue;
+    margin-top: 10px;
+}
+.lines{
+    font-size: 50px;
+    text-align: center;
+    color: aliceblue;
+    margin-bottom: 30px;
+}
+.tagline{
+    font-size: 15px;
+    color: #ffd700;
+    text-align: center;
+}
+
+.textbox{
+    background-color: rgba(0, 0, 0, 0.449);
+    padding: 20px;
+    justify-content: center;
+}
+.hero{
+    background-image: url(https://media.npr.org/assets/img/2021/10/06/gettyimages-1302813215_wide-a248aa0418c5154e72d6a555f556bf5d99e7cac7.jpg);
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+/* Search bar starts from here */
+.mmt{
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: aliceblue;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+.choosetriptype{
+    display: flex;
+    list-style: none;
+}
+.triptypechoose{
+    margin-left: 20px;
+    padding: 10px;
+}
+.triptypechoose a{
+    color: black;
+    text-decoration: none;
+    font-size: medium;
+    padding: 5px 15px;
+    margin: 2px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+/* for active link in search js */
+.triptypechoose a.active-trip {
+  color: cyan;
+  background-color: black;
+  border-radius: 50px;
+}
+
+/* Autocomplete Suggestion Box */
+.suggestion-box {
+  position: absolute;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  width: 15%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+}
+
+.suggestion-box p {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.suggestion-box p:hover {
+  background-color: #f0f0f0;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+
+
+.triptypechoose a:hover{
+    color: cyan;
+    background-color: rgb(0, 4, 5);
+    border-radius: 50px;
+    cursor: pointer;
+} 
+/* STARTED the search bar */
+.searchbarcontainer {
+    background-color: rgba(0, 255, 255, 0.112);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;   
+}
+.searchinputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.inputgroup {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.inputgroup label {
+    font-size: 15px;
+    color: rgb(43, 42, 42)5;
+    font-family: sans-serif;
+    font-weight: bold ;
+}
+.inputgroup input,
+.inputgroup select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.search-button {
+    background: linear-gradient(135deg, cyan, #0077ffb0);
+    color: rgb(10, 10, 10);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 15px;
+}
+.search-button:hover {
+    background: #ffd700;
+    color: black;
+    transform: scale(1.02);
+}
+.specialoffers {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.specialoffers label {
+    font-size: 15px;
+    color: rgb(43, 42, 42);
+    font-weight: bold;
+    font-family: sans-serif;
+}
+  /* Search  bar ends here */
+                 /* Hero section CSS ends here */
+  /* Offer section CSS starts from here */
+.offerlogo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: rgba(0, 255, 255, 0.044);
+    font-weight: bold;
+    font-size: 30px;
+}
+.offersection{
+    justify-items: center;
+    padding: 20px;
+}
+ /* Main Slider Container starts from here */
+ .slidercontainer{
+    overflow: hidden;
+    width: 100%;
+    background-color: white;
+    padding: 20px ;
+    position: relative;
+ }
+ .slider{
+    display: flex;
+    gap: 25px;
+    animation: slide 100s linear infinite;
+    margin-bottom: 30px;
+ }
+ .offercontent{
+    margin-top: 5px;
+ }
+ .offercard{
+    width: 350px;
+    height: 280px;
+    border-radius: 10px;
+    background-color: #00caee13;
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+ }
+ .offercard img{
+    width: 300px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    
+ }
+ .offervalidity{
+    font-size: 12px;
+    text-align: left;
+    font-weight: bold;
+    color: #393737;
+    padding: 2px;
+    margin-top: 10px;
+ }
+ .offercard:hover{
+    scale: 1.1;
+ }
+ .slidercontainer:hover .slider {
+    animation-play-state: paused;
+}
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2500px); }
+}
+            /* Popular Destination CSS starts from here */
+ .PD1{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+ }
+ .PD11{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+ }
+ .PD2{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+ }
+ .PD22{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+ }
+ .PDcards{
+    height: 200px;
+    width: 250px;
+    margin: 20px 0px;
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 10px;
+ }
+ .PDcards img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+ }
+  .PDcards img:hover{
+    transform: scale(1.05);
+  }
+ .PDfull{
+    background-color: #f2f2f2;
+    padding: 10px;
+ }
+ .PDD{
+    padding: 10px;
+    text-align: center;
+ }
+ /* Popular Destination CSS ends here */
+            /* Why book us start here */
+.bookus{
+    text-align: center;
+    margin-top: 20px;
+}
+.whyus{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.cards{
+    height: 200px;
+    width: 250px;
+    border-left: 2px solid #E6B800;
+    padding: 20px;
+    margin: 20px 0px;
+    text-align: center;
+}
+.cards:hover{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.cardtag{
+    text-align: center;
+    font-size: 18px;
+    margin: 10px;
+}
+.cardcontent{
+    text-align: center;
+}
+/* Guest review starts from here */
+.CR{
+    text-align: center;
+}
+.review{
+    height: 200px;
+    width: 270px;
+    text-align: center;
+    border: 2px solid #E6B800 ;
+    border-radius: 20px;
+    color:  #333333;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    transition: 0.2s ease-in-out;
+}
+.review:hover{
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+.consumer-review{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+/* Guest reviews end here */
+            /* Why book Us ends here */
+            /* Last para CSS starts from here */
+.paragraph{
+    background-color: #f2f2f2;
+    padding-bottom: 10px;
+}
+.last{
+    text-align: center;
+    padding: 20px;
+    color: black;
+}
+.para1{
+    text-align: justify;
+    font-size: 18px;
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    color: black;
+}
+.Border{ 
+    height: 2px;
+    background-color: #ffd700;
+    width: 100%;
+} 
+               /* Last para CSS ends here */
+               /* Applying CSS on Footer */
+.footer{
+    padding-top: 10PX;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+h2{
+    color: #ffd700;
+}
+.QuickLinks a{
+    color: aliceblue;
+    display: block;
+    text-decoration: none;
+    align-items: center;
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+    justify-content: space-between;
+    transition: 0.3s ease-in-out;
+    
+}
+.QuickLinks a:hover{
+    color: cyan;
+    transform: scale(1.2);
+}
+.quick{
+    list-style: none;
+    text-align: left;
+    padding: 10px;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+.taglines{
+    color: aliceblue;
+    font-size: 15px;
+    align-items: center;
+}
+.tag{
+    margin-top: 20px;
+}
+.Followus a{
+    color: aliceblue;
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 20px;
+    transition: 0.3s ease-in-out
+}
+.Followus a:hover{
+    transform: scale(1.2);
+    color: cyan;
+}
+.install img{
+    height: 150px;
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+}
+.install img:hover{
+    transform: scale(1.05);
+}
+.Scan img{
+    height: 150px;
+    margin-top: 25px;
+    transition: 0.3s ease-in-out;
+}
+.Scan img:hover{
+   transform: scale(1.05);
+}
+.copyright{
+    text-align: center;
+    width: 100%;
+    background-color: black;
+    padding-bottom: 20px;
+    padding-right: 60px;
+    flex-direction: column;
+    justify-content: center;
+}
+.copyright a{
+    text-decoration: none;
+    color: aliceblue;
+    padding-left: 70px;
+}
+.copyright a:hover{
+    color: cyan;
+}
+                                   /* Footer ends here */
+            /* Cab CSS starts from here */
+
+            /* Cab CSS ends here */
+  /* Terms & Condition starts from here*/
+.TC{
+    text-align: center;
+    font-size: 70px;
+    padding: 10px;
+    color: #ffd700;
+    text-decoration: underline;
+    text-decoration-color: #ffd700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 10px
+}
+.TC1{
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: aliceblue;
+    padding-bottom: 20px;
+}
+.TC1 h3{
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+.TC2{
+    margin-left: 20px;
+}
+.TCfull{
+    background-color: black;
+}
+                                 /* Terms & Condition ends here */
+  /* Contact Us starts from here  */
+     .contact-container{
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact-left{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.contact-left-title h2{
+    font-weight: 600;
+    color: #ff08c1;
+    font-size: 50px;
+    margin-bottom: 5px;
+}
+.contact-left-title hr{
+    border: none;
+    width: 120px;
+    height: 5px;
+    background-color: #f048c6;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.contact-inputs{
+    width: 400px;
+    height: 50px;
+    border: 1px solid rgb(237, 148, 234);
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+    resize: none;
+}
+.contact-left textarea{
+    height: 150px;
+    padding: 20px;
+    border-radius: 25px;
+}
+.contact-inputs:hover{
+    border: 2px solid #58126a;
+}
+.contact-left button{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: aliceblue;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(300deg,#f6ea41,#f048c6);
+    cursor: pointer;
+}
+.contact-left button:hover{
+    background: linear-gradient(300deg,#f048c6,#f6ea41) ;
+}
+.contact-right img{
+    width: 500px;
+}     
+   /* Contact Us ends here */
+
+   /* flight section css starts */
+
+body {
+  background-color: #f2f2f2;
+}
+
+.info-container {
+  background-color: #f2f2f2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  color: black;
+  font-weight: 700; 
+  text-align: center;
+}
+
+p {
+  color: black;
+  font-size: 18px;
+}
+
+.flight-deals {
+  background-color: white;
+  padding-bottom: 50px;
+}
+
+.flight-deals h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f3f3;
+  padding: 20px 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-size: 14px;
+  color: black;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.controls select {
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.month-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.travel-period button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.travel-period button.active {
+  background: #000;
+  color: white;
+}
+
+.deals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px 40px;
+}
+
+.deal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* ✅ vertically center the right part */
+  border-top: 2px solid #eee;
+  padding-top: 20px;
+  gap: 20px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.deal-info {
+  flex: 1;
+}
+
+.deal-info h2 {
+  font-size: 20px;
+  margin: 0 0 6px;
+  color: black;
+}
+
+.deal-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.deal-right {
+  display: flex;
+  align-items: center;
+  gap: 500px;
+  text-align: right;
+}
+
+.deal-price {
+  font-size: 16px;
+  color: black;
+}
+
+.deal-price span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff6600;
+  margin-left: 5px;
+}
+
+.book-btn {
+  padding: 10px 18px;
+  background: #2196f3;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.book-btn:hover {
+  background: #4bb4fe;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.718);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #06040491;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  text-align: center;
+}
+.modal-content h2{
+    color: #ffd700;
+    padding: 10px;
+}
+.modal-content p{
+    color: white;
+}
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+/* flight section css ends */
+
+/* hotel section css starts */
+.container-normalinfo {
+  background-color: white;
+  padding: 20px 40px;
+}
+
+.container-normalinfo h2 {
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.container-normalinfo h3 {
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.container-normalinfo p{
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+ol {
+  padding-left: 20px;
+}
+
+ol li {
+  margin-bottom: 15px;
+}
+
+strong {
+  color: #000;
+}
+.booking-withus{
+    background-color: #f3f3f3;
+    padding: 20px 40px;
+    overflow: hidden;
+}
+.booking-withus h2{
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.booking-withcards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px
+}
+.booking-cards img{
+    height: 150px;
+    width: 270px;
+    border-radius: 20px;
+    transition: 0.3s linear;
+}
+.booking-cards img:hover{
+    scale: 1.03;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+/* Hotel Search bar starts from here */
+.hotel-search {
+  margin: 20px 40px;
+  background-color: aliceblue;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Added for contrast */
+  border: 1px solid #d0eaff; /* Light border for definition */
+}
+
+.hotel-type-list {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.hotel-type-item {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.hotel-type-item a {
+  color: black;
+  text-decoration: none;
+  font-size: medium;
+  padding: 5px 15px;
+  margin: 2px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.hotel-type-item a.active-trip {
+  color: cyan;
+  background-color: black;
+  border-radius: 50px;
+}
+
+.hotel-type-item a:hover {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.hotel-search-container {
+  background-color: rgba(0, 255, 255, 0.112);
+  margin-top: 10px;
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Gentle elevation */
+  border: 1px solid #c2e9f5; /* Light blue border */
+}
+
+.hotel-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.hotel-input-group {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 180px;
+}
+
+.hotel-input-group label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.hotel-input-group input,
+.hotel-input-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.hotel-search-button {
+  background: linear-gradient(135deg, cyan, #0077ffb0);
+  color: rgb(10, 10, 10);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+}
+
+.hotel-search-button:hover {
+  background: #ffd700;
+  color: black;
+  transform: scale(1.02);
+}
+
+.hotel-special-offers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.hotel-special-offers label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.suggestion-box {
+  position: absolute;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  width: 200px;
+  max-height: 150px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.suggestion-box p {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.suggestion-box p:hover {
+  background-color: #f0f0f0;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+                /* Hotel Search bar ends here */
+/* hotel section css ends */
+                /* train section starts from here */
+.train-search {
+  margin: 20px 40px;
+  background-color: aliceblue;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Added for contrast */
+  border: 1px solid #d0eaff; /* Light border for definition */
+}
+
+.train-type-list {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.train-type-item {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.train-type-item a {
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: black;
+  padding: 5px 15px;
+  margin: 2px;
+}
+
+.train-type-item a:hover {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.train-type-item a.train-active-type {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.train-search-container {
+  background-color: rgba(0, 255, 255, 0.112);
+  margin-top: 10px;
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Gentle elevation */
+  border: 1px solid #c2e9f5; /* Light blue border */
+}
+
+.train-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;;
+}
+
+.train-input-group {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 180px;
+}
+
+.train-input-group label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.train-input-group input,
+.train-input-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px
+}
+
+.train-search-button {
+  background: linear-gradient(135deg, cyan, #0077ffb0);
+  color: rgb(10, 10, 10);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 15px
+}
+
+.train-search-button:hover {
+  background: #ffd700;
+  color: black;
+  transform: scale(1.02);
+}
+
+.train-special-offers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+}
+
+.train-special-offers label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.reward-banner {
+  background-color: white;
+}
+.reward-banner img {
+  width: 100%;
+}
+.book-train {
+  background-color: white;
+  padding: 20PX;
+}
+
+.book-train h2 {
+  color: black;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.book-train-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.book-train-offer img{
+  height: 100px;
+  width: 270px;
+  border-radius: 15px;
+  transform: 0.3s linear;
+}
+
+.book-train-offer img:hover {
+   scale: 1.03;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.IRCTC-container-charge {
+  background-color: white;
+  padding: 25px;
+  margin: auto;
+}
+
+.IRCTC-container-charge h2 {
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+}
+
+.IRCTC-container-charge table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.IRCTC-container-charge thead th {
+  background-color: #f2f2f2;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+  border: 1px solid #ddd;
+}
+
+.IRCTC-container-charge tbody td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.IRCTC-container {
+  background-color: #f3f3f3;
+  padding: 25px;
+  margin: 20px 40px;
+  margin: auto;
+}
+
+.IRCTC-container h2 {
+  margin-bottom: 20px;
+  color: black;
+}
+
+.IRCTC-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.IRCTC-container table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  vertical-align: top;
+  color: black;
+}
+
+.IRCTC-container table tr:nth-child(odd) {
+  background-color: white;
+}
+
+.IRCTC-container-information {
+  background-color: white;
+  padding: 25px;
+  margin: auto;
+}
+
+.IRCTC-container-information h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.IRCTC-container-information p {
+  font-size: 16px;
+  color: black;
+  line-height: 1.6;
+}
+
+.IRCTC-container-information ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.IRCTC-container-information ul li {
+  font-size: 16px;
+  color: black;
+  margin-bottom: 6px;
+}
+/* train section ends here */
+                /* cab section starts from here */
+.cab-search {
+  margin: 20px 40px;
+  background-color: aliceblue;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Added for contrast */
+  border: 1px solid #d0eaff; /* Light border for definition */
+}
+.Cab{
+  background-color: white;
+}
+
+.cab-type-list {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.cab-type-item {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.cab-type-item a {
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: black;
+  padding: 5px 15px;
+  margin: 2px;
+}
+
+.cab-type-item a:hover {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.cab-type-item a.cab-active-type {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.cab-search-container {
+  background-color: rgba(0, 255, 255, 0.112);
+  margin-top: 10px;
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Gentle elevation */
+  border: 1px solid #c2e9f5; /* Light blue border */
+}
+
+.cab-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.cab-input-group {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 180px;
+}
+
+.cab-input-group label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.cab-input-group input,
+.cab-input-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.cab-search-button {
+  background: linear-gradient(135deg, cyan, #0077ffb0);
+  color: rgb(10, 10, 10);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+}
+
+.cab-search-button:hover {
+  background: #ffd700;
+  color: black;
+  transform: scale(1.02);
+}
+
+.cab-special-offers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.cab-special-offers label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.car-rental-section {
+  padding: 30px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.car-rental-section h1 {
+  margin-bottom: 20px;
+  color: black;
+  font-size: 30px;
+}
+
+.car-rental-section p {
+  margin: 0 auto 30px;
+  color: #555;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
+.city-card {
+  width: 250px;
+  height: 380px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.city-card:hover {
+  transform: translateY(-5px);
+}
+
+.city-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.city-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.city-info h3 {
+  margin: 0;
+}
+
+.city-info p {
+  margin: 5px 0 15px;
+  color: #777;
+  font-size: 14px;
+  padding-bottom: 20px;
+}
+
+.price-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-book span {
+  font-weight: bold;
+  color: black;
+}
+
+.price-book a {
+  text-decoration: none;
+  color: #ff5e00;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Cab-book{
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+}
+
+.Cab-book h1 {
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Cab-book-benefits{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.Cab-benefits-offer{
+  width: 250px;
+  height: 200px;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-left: 2px solid #E6B800;
+  text-align: center;
+}
+
+.Cab-benefits-offer:hover{
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.Cab-benefits-offer h3{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Cab-benefits-offer p{
+  font-size: 16px;
+}
+
+.cab-info {
+  margin: 20px auto;
+  padding: 20px;
+  line-height: 1.3;
+  background-color: #f2f2f2;
+}
+
+.cab-info-inside{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+.cab-info h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cab-info h2 {
+  margin-top: 30px;
+  font-weight: 600;
+  color: black;
+}
+
+.cab-info h3 {
+  margin-top: 25px;
+  font-weight: 500;
+  color: #444;
+}
+
+.cab-info ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.cab-info ul li {
+  margin-bottom: 12px;
+}
+
+strong {
+  font-weight: 600;
+}
+/* cab section ends here */
+/* bus section starts from here */
+.bus-search {
+  margin: 20px 40px;
+  background-color: aliceblue;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Added for contrast */
+  border: 1px solid #d0eaff; /* Light border for definition */
+}
+
+.bus-type-list {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.bus-type-item {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.bus-type-item a {
+  text-decoration: none;
+  font-size: medium;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: black;
+  padding: 5px 15px;
+  margin: 2px;
+}
+
+.bus-type-item a:hover {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.bus-type-item a.bus-active-type {
+  color: cyan;
+  background-color: rgb(0, 4, 5);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.bus-search-container {
+  background-color: rgba(0, 255, 255, 0.112);
+  margin-top: 10px;
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Gentle elevation */
+  border: 1px solid #c2e9f5; /* Light blue border */
+}
+
+.bus-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.bus-input-group {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 180px;
+}
+
+.bus-input-group label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.bus-input-group input,
+.bus-input-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bus-search-button {
+  background: linear-gradient(135deg, cyan, #0077ffb0);
+  color: rgb(10, 10, 10);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+}
+
+.bus-search-button:hover {
+  background: #ffd700;
+  color: black;
+  transform: scale(1.02);
+}
+
+.bus-special-offers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.bus-special-offers label {
+  font-size: 15px;
+  color: rgb(43, 42, 42);
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.bus-offer-container {
+ overflow: hidden;
+ width: 100%;
+ background-color: white;
+ padding: 20px ;
+ position: relative;
+}
+
+.bus-offer-container h2{
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.offers-scroll {
+  display: flex;
+  gap: 25px;
+  animation: slide 100s linear infinite;
+  margin-bottom: 20px;
+}
+
+.offer-card-bus {
+  width: 350px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #00caee13;  
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+}
+.offers-scroll img{
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+ .offer-card-bus:hover{
+    scale: 1.05;
+ }
+ .bus-offer-container:hover .offers-scroll {
+    animation-play-state: paused;
+}
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2500px); }
+}
+
+.SRTC-container {
+  margin: auto;
+  background: #f3f3f3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.SRTC-container h2 {
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+}
+
+.srtc-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.srtc-card {
+  height: 160px;
+  width: 130px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  padding: 15px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.srtc-card:hover {
+  transform: translateY(-3px);
+}
+
+.srtc-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.srtc-card h4 {
+  font-size: 16px;
+  margin: 5px 0 2px;
+  color: #333;
+}
+
+.srtc-card p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+            /* Bus info starts */
+.bus-container-info {
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  color: black;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #444;
+}
+
+/* bus section ends here */
+
+                /* Navbar color or each section */
+   body.Bus .navbar{
+    position: static;
+   }
+   body.Cab .navbar{
+    position: static;
+   }
+   body.TripPlanner .navbar{
+    position: static;
+   }
+   body.ContactUs .navbar{
+    position: static;
+   }
+   body.termcondition .navbar{
+    background-color: black;
+    position: static;
+   }
+   body.Hotel .navbar{
+    position: static;
+   }
+   body.Train .navbar{
+    position: static;
+   }
+   body.TripPlanner .navbar{
+    position: static;
+   }
